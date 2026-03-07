@@ -12,7 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: #FFF8F0; -webkit-font-smoothing: antialiased; }
 
-    /* ── Section Wrapper ── */
+    /* ── Section ── */
     .ml-buy-boxes { padding: 60px 20px; background-color: #FFF8F0; }
     .ml-buy-boxes__container { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
 
@@ -38,7 +38,7 @@
     .ml-buy-box--featured { box-shadow: 0 0 80px 0 rgba(95,175,140,0.35), 0 8px 30px 0 rgba(0,0,0,0.12); }
     .ml-buy-box--featured:hover { box-shadow: 0 0 120px 0 rgba(95,175,140,0.45), 0 12px 40px 0 rgba(0,0,0,0.15); }
 
-    /* ── Promo Banner ── */
+    /* ── Promo ── */
     .ml-buy-box__promo { padding: 10px 15px; text-align: center; }
     .ml-buy-box__promo-text { margin: 0; font-family: 'Open Sans', sans-serif; font-size: 15px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3; }
 
@@ -52,6 +52,95 @@
     /* ── Image ── */
     .ml-buy-box__image-wrapper { display: flex; justify-content: center; padding: 5px 0; }
     .ml-buy-box__image { width: 100%; max-width: 300px; height: auto; border-radius: 8px; object-fit: contain; }
+
+    /* ══════════════════════════════════
+       SCENT PICKER
+       ══════════════════════════════════ */
+    .ml-scent-picker { display: flex; flex-direction: column; gap: 8px; }
+    .ml-scent-picker__label {
+      font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 700;
+      text-align: center; text-transform: uppercase; letter-spacing: 0.5px; color: #2C2C2C;
+    }
+    .ml-scent-picker__label span { color: #5FAF8C; }
+
+    /* ─ Single select (1-bottle) ─ */
+    .ml-scent-picker--single .ml-scent-picker__options {
+      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    }
+    .ml-scent-picker__option {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      cursor: pointer; padding: 6px; border-radius: 10px; border: 2px solid transparent;
+      transition: border-color 0.15s, transform 0.1s; position: relative; width: 76px;
+    }
+    .ml-scent-picker__option:hover { border-color: rgba(95,175,140,0.3); transform: scale(1.05); }
+    .ml-scent-picker__option--selected { border-color: #5FAF8C; background: rgba(95,175,140,0.08); }
+    .ml-scent-picker__option-img {
+      width: 50px; height: 50px; border-radius: 50%; object-fit: cover;
+      border: 2px solid #e0e0e0; transition: border-color 0.15s;
+    }
+    .ml-scent-picker__option--selected .ml-scent-picker__option-img { border-color: #5FAF8C; }
+    .ml-scent-picker__option-name {
+      font-family: 'Open Sans', sans-serif; font-size: 10px; font-weight: 600;
+      text-align: center; line-height: 1.2; color: #2C2C2C;
+    }
+    .ml-scent-picker__option-check {
+      position: absolute; top: 2px; right: 2px; width: 18px; height: 18px;
+      background: #5FAF8C; border-radius: 50%; display: none; align-items: center; justify-content: center;
+    }
+    .ml-scent-picker__option--selected .ml-scent-picker__option-check { display: flex; }
+
+    /* ─ Multi select (bundles) ─ */
+    .ml-scent-picker--multi .ml-scent-picker__options {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .ml-scent-picker__row {
+      display: flex; align-items: center; gap: 10px; padding: 8px 0;
+      border-bottom: 1px solid rgba(95,175,140,0.15);
+    }
+    .ml-scent-picker__row:last-child { border-bottom: none; }
+    .ml-scent-picker__row-img {
+      width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+      border: 2px solid #e0e0e0; flex-shrink: 0;
+    }
+    .ml-scent-picker__row-img--active { border-color: #5FAF8C; }
+    .ml-scent-picker__row-info { flex: 1; min-width: 0; }
+    .ml-scent-picker__row-name {
+      font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 700; color: #2C2C2C;
+    }
+    .ml-scent-picker__row-notes {
+      font-family: 'Open Sans', sans-serif; font-size: 10px; font-weight: 400;
+      color: #888; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .ml-scent-picker__row-controls {
+      display: flex; align-items: center; gap: 0; flex-shrink: 0;
+      border: 1.5px solid #ddd; border-radius: 6px; overflow: hidden; height: 32px;
+    }
+    .ml-scent-picker__row-btn {
+      width: 30px; height: 100%; display: flex; align-items: center; justify-content: center;
+      background: transparent; border: none; cursor: pointer; font-size: 16px; font-weight: 700;
+      color: #2C2C2C; transition: background 0.1s;
+    }
+    .ml-scent-picker__row-btn:hover { background: rgba(95,175,140,0.1); }
+    .ml-scent-picker__row-btn:disabled { opacity: 0.3; cursor: default; }
+    .ml-scent-picker__row-btn:disabled:hover { background: transparent; }
+    .ml-scent-picker__row-count {
+      width: 28px; text-align: center; font-family: 'Open Sans', sans-serif;
+      font-size: 14px; font-weight: 700; color: #2C2C2C;
+    }
+    .ml-scent-picker__progress {
+      display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 4px;
+    }
+    .ml-scent-picker__progress-bar {
+      flex: 1; max-width: 160px; height: 6px; background: #e8e8e8; border-radius: 3px; overflow: hidden;
+    }
+    .ml-scent-picker__progress-fill {
+      height: 100%; background: #5FAF8C; border-radius: 3px; transition: width 0.25s ease;
+    }
+    .ml-scent-picker__progress-text {
+      font-family: 'Open Sans', sans-serif; font-size: 11px; font-weight: 700; color: #5FAF8C; white-space: nowrap;
+    }
+    .ml-scent-picker__progress-text--complete { color: #5FAF8C; }
+    .ml-scent-picker__progress-text--incomplete { color: #cc7700; }
 
     /* ── Features ── */
     .ml-buy-box__features { display: flex; flex-direction: column; }
@@ -74,16 +163,18 @@
     .ml-buy-box__compare-price { font-family: 'Open Sans', sans-serif; font-size: 18px; font-weight: 700; text-decoration: line-through; opacity: 0.5; }
     .ml-buy-box__per-unit { font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 600; text-align: center; color: #5FAF8C; }
 
-    /* ── ATC Button ── */
+    /* ── ATC ── */
     .ml-buy-box__atc { margin-top: 4px; }
     .ml-buy-box__atc-wrapper { position: relative; }
     .ml-buy-box__atc-wrapper::before { content: ''; width: 14px; height: 14px; display: block; position: absolute; border: 2px solid #5FAF8C; left: -5px; top: -5px; border-right: none; border-bottom: none; z-index: 2; }
     .ml-buy-box__atc-wrapper::after { content: ''; width: 14px; height: 14px; display: block; position: absolute; border: 2px solid #5FAF8C; right: -5px; bottom: -5px; border-left: none; border-top: none; z-index: 2; }
-    .ml-buy-box__atc-button { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; border: none; border-radius: 10px; cursor: pointer; font-family: 'Open Sans', sans-serif; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; height: 56px; padding: 0 20px; position: relative; box-shadow: 0 3px 6px rgba(0,0,0,0.2); transition: transform 0.1s ease, box-shadow 0.1s ease; background-color: #5FAF8C; color: #ffffff; }
+    .ml-buy-box__atc-button { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; border: none; border-radius: 10px; cursor: pointer; font-family: 'Open Sans', sans-serif; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; height: 56px; padding: 0 20px; position: relative; box-shadow: 0 3px 6px rgba(0,0,0,0.2); transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.2s; background-color: #5FAF8C; color: #ffffff; }
     .ml-buy-box__atc-button:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(0,0,0,0.25); }
     .ml-buy-box__atc-button:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
     .ml-buy-box__atc-button::before { content: ''; width: 14px; height: 14px; display: block; position: absolute; border: 2px solid #5FAF8C; right: -5px; top: -5px; border-bottom: none; border-left: none; }
     .ml-buy-box__atc-button::after { content: ''; width: 14px; height: 14px; display: block; position: absolute; border: 2px solid #5FAF8C; left: -5px; bottom: -5px; border-right: none; border-top: none; }
+    .ml-buy-box__atc-button--disabled { opacity: 0.5; cursor: not-allowed; }
+    .ml-buy-box__atc-button--disabled:hover { transform: none; box-shadow: 0 3px 6px rgba(0,0,0,0.2); }
     .ml-buy-box__cart-icon { flex-shrink: 0; }
     .ml-buy-box__atc-price { font-weight: 800; }
 
@@ -106,7 +197,7 @@
       .ml-buy-boxes__countdown-item { min-width: 64px; padding: 12px 14px; }
       .ml-buy-boxes__countdown-number { font-size: 24px; }
       .ml-buy-boxes__countdown-label { font-size: 12px; }
-      .ml-buy-boxes__cards { flex-direction: row; align-items: stretch; justify-content: center; flex-wrap: wrap; gap: 24px; }
+      .ml-buy-boxes__cards { flex-direction: row; align-items: flex-start; justify-content: center; flex-wrap: wrap; gap: 24px; }
       .ml-buy-box { max-width: 360px; flex: 1 1 300px; }
       .ml-buy-box--featured { transform: scale(1.03); }
       .ml-buy-box--featured:hover { transform: scale(1.05) translateY(-2px); }
@@ -115,7 +206,6 @@
       .ml-buy-box__atc-button { font-size: 20px; height: 60px; }
     }
 
-    /* ── Responsive: Desktop ── */
     @media (min-width: 1024px) {
       .ml-buy-boxes__title { font-size: 52px; }
       .ml-buy-boxes__cards { flex-wrap: nowrap; gap: 30px; }
@@ -127,8 +217,12 @@
     }
 
     @keyframes ml-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.85; } }
-    .ml-buy-box--featured .ml-buy-box__atc-button { animation: ml-pulse 2s ease-in-out infinite; }
+    .ml-buy-box--featured .ml-buy-box__atc-button:not(.ml-buy-box__atc-button--disabled) { animation: ml-pulse 2s ease-in-out infinite; }
     .ml-buy-box--featured .ml-buy-box__atc-button:hover { animation: none; }
+
+    /* Shake for validation */
+    @keyframes ml-shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
+    .ml-scent-picker--shake { animation: ml-shake 0.4s ease; }
   </style>
 </head>
 <body>
@@ -139,59 +233,59 @@
     <!-- HEADING -->
     <div class="ml-buy-boxes__heading">
       <div class="ml-buy-boxes__title-row">
-        <svg class="ml-buy-boxes__arrow" width="20" height="28" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 0L10 24M10 24L2 16M10 24L18 16" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg class="ml-buy-boxes__arrow" width="20" height="28" viewBox="0 0 20 28" fill="none"><path d="M10 0L10 24M10 24L2 16M10 24L18 16" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h2 class="ml-buy-boxes__title">Choose Your Signature Scent</h2>
-        <svg class="ml-buy-boxes__arrow" width="20" height="28" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 0L10 24M10 24L2 16M10 24L18 16" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg class="ml-buy-boxes__arrow" width="20" height="28" viewBox="0 0 20 28" fill="none"><path d="M10 0L10 24M10 24L2 16M10 24L18 16" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-
-      <!-- Countdown -->
       <div class="ml-buy-boxes__countdown" data-countdown-end="">
-        <div class="ml-buy-boxes__countdown-item">
-          <span class="ml-buy-boxes__countdown-number" data-days>00</span>
-          <span class="ml-buy-boxes__countdown-label">DAYS</span>
-        </div>
-        <div class="ml-buy-boxes__countdown-item">
-          <span class="ml-buy-boxes__countdown-number" data-hours>00</span>
-          <span class="ml-buy-boxes__countdown-label">HOURS</span>
-        </div>
-        <div class="ml-buy-boxes__countdown-item">
-          <span class="ml-buy-boxes__countdown-number" data-minutes>00</span>
-          <span class="ml-buy-boxes__countdown-label">MIN</span>
-        </div>
-        <div class="ml-buy-boxes__countdown-item">
-          <span class="ml-buy-boxes__countdown-number" data-seconds>00</span>
-          <span class="ml-buy-boxes__countdown-label">SEC</span>
-        </div>
+        <div class="ml-buy-boxes__countdown-item"><span class="ml-buy-boxes__countdown-number" data-days>00</span><span class="ml-buy-boxes__countdown-label">DAYS</span></div>
+        <div class="ml-buy-boxes__countdown-item"><span class="ml-buy-boxes__countdown-number" data-hours>00</span><span class="ml-buy-boxes__countdown-label">HOURS</span></div>
+        <div class="ml-buy-boxes__countdown-item"><span class="ml-buy-boxes__countdown-number" data-minutes>00</span><span class="ml-buy-boxes__countdown-label">MIN</span></div>
+        <div class="ml-buy-boxes__countdown-item"><span class="ml-buy-boxes__countdown-number" data-seconds>00</span><span class="ml-buy-boxes__countdown-label">SEC</span></div>
       </div>
-
-      <div class="ml-buy-boxes__urgency">
-        🔥 Spring launch stock is limited — orders ship within 48 hours.
-      </div>
+      <div class="ml-buy-boxes__urgency">🔥 Spring launch stock is limited — orders ship within 48 hours.</div>
     </div>
 
-    <!-- BUY BOX CARDS -->
+    <!-- CARDS -->
     <div class="ml-buy-boxes__cards">
 
       <!-- ═══ CARD 1: Single Bottle ═══ -->
-      <div class="ml-buy-box">
+      <div class="ml-buy-box" data-bundle-size="1">
         <div class="ml-buy-box__badge" style="background: #5FAF8C; color: #fff;">STARTER</div>
-        <div class="ml-buy-box__content" style="--border-color: rgba(95,175,140,0.25); --accent-color: #5FAF8C; --text-color: #2C2C2C;">
+        <div class="ml-buy-box__content">
           <h3 class="ml-buy-box__title">1 Bottle</h3>
-          <div class="ml-buy-box__image-wrapper">
-            <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Luxe_Blanc.png?v=1767456346" alt="Luxe Blanc Bottle" class="ml-buy-box__image" width="400" height="400" loading="lazy">
+
+          <!-- SCENT PICKER: Single Select -->
+          <div class="ml-scent-picker ml-scent-picker--single" data-required="1">
+            <div class="ml-scent-picker__label">Choose your scent:</div>
+            <div class="ml-scent-picker__options">
+              <div class="ml-scent-picker__option" data-scent="Luxe Blanc">
+                <div class="ml-scent-picker__option-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <img class="ml-scent-picker__option-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Luxe_Blanc.png?v=1767456346" alt="Luxe Blanc">
+                <span class="ml-scent-picker__option-name">Luxe Blanc</span>
+              </div>
+              <div class="ml-scent-picker__option" data-scent="Belle Vie">
+                <div class="ml-scent-picker__option-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <img class="ml-scent-picker__option-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Belle_Vie.png?v=1767456283" alt="Belle Vie">
+                <span class="ml-scent-picker__option-name">Belle Vie</span>
+              </div>
+              <div class="ml-scent-picker__option" data-scent="Fleur Sombre">
+                <div class="ml-scent-picker__option-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <img class="ml-scent-picker__option-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Fleur_Sombre.png?v=1767456322" alt="Fleur Sombre">
+                <span class="ml-scent-picker__option-name">Fleur Sombre</span>
+              </div>
+              <div class="ml-scent-picker__option" data-scent="Douceur Vanillee">
+                <div class="ml-scent-picker__option-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <img class="ml-scent-picker__option-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Douceur_Vanillee.png?v=1767456240" alt="Douceur Vanillee">
+                <span class="ml-scent-picker__option-name">Douceur Vanill&eacute;e</span>
+              </div>
+            </div>
           </div>
+
           <div class="ml-buy-box__features">
             <div class="ml-buy-box__feature">
               <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
               <span>1 Full-Size Bottle (32oz)</span>
-            </div>
-            <div class="ml-buy-box__feature">
-              <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
-              <span>Choose your signature scent</span>
             </div>
             <div class="ml-buy-box__feature">
               <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
@@ -205,62 +299,98 @@
           <hr class="ml-buy-box__divider">
           <div class="ml-buy-box__price-row">
             <div class="ml-buy-box__quantity-selector">
-              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--minus" aria-label="Decrease quantity">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M12.28 7.72H1.47a.72.72 0 110-1.44h10.81a.72.72 0 110 1.44Z"/></svg>
-              </button>
+              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--minus" aria-label="Decrease quantity"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M12.28 7.72H1.47a.72.72 0 110-1.44h10.81a.72.72 0 110 1.44Z"/></svg></button>
               <span class="ml-buy-box__qty-value">1</span>
-              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--plus" aria-label="Increase quantity">
-                <svg width="13" height="14" viewBox="0 0 13 14" fill="currentColor"><path d="M11.69 6.25H7V1.58a.75.75 0 10-1.5 0v4.67H.88a.75.75 0 100 1.5H5.5v4.64a.75.75 0 101.5 0V7.75h4.69a.75.75 0 100-1.5Z"/></svg>
-              </button>
+              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--plus" aria-label="Increase quantity"><svg width="13" height="14" viewBox="0 0 13 14" fill="currentColor"><path d="M11.69 6.25H7V1.58a.75.75 0 10-1.5 0v4.67H.88a.75.75 0 100 1.5H5.5v4.64a.75.75 0 101.5 0V7.75h4.69a.75.75 0 100-1.5Z"/></svg></button>
             </div>
-            <div class="ml-buy-box__prices">
-              <span class="ml-buy-box__price">$39</span>
-            </div>
+            <div class="ml-buy-box__prices"><span class="ml-buy-box__price">$39</span></div>
           </div>
           <div class="ml-buy-box__per-unit">$39/bottle</div>
           <div class="ml-buy-box__atc">
             <div class="ml-buy-box__atc-wrapper">
-              <button class="ml-buy-box__atc-button" data-price="39" data-compare-price="" onclick="event.preventDefault();">
+              <button class="ml-buy-box__atc-button ml-buy-box__atc-button--disabled" data-price="39" data-compare-price="" onclick="event.preventDefault();">
                 <svg class="ml-buy-box__cart-icon" width="21" height="21" viewBox="0 0 21 21" fill="none"><g clip-path="url(#c1)"><path d="M1.25 1.09a.83.83 0 000 1.67h1.48c.12 0 .24.04.34.11.1.07.17.17.21.28l2.75 8.24c.12.37.14.76.04 1.13l-.22.91a1.67 1.67 0 001.07 1.65c.2.08.41.12.63.12h10a.83.83 0 000-1.67H7.91a.33.33 0 01-.32-.29l.17-.68a.33.33 0 01.32-.24h8.93a.83.83 0 00.79-.57l2.22-6.67a.83.83 0 00-.79-1.1H5.88a.33.33 0 01-.32-.24l-.79-2.37a.83.83 0 00-.79-.57H1.25ZM7.08 16.92a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Zm10 0a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Z" fill="currentColor"/></g><defs><clipPath id="c1"><rect width="20" height="20" fill="white" transform="translate(.41 .26)"/></clipPath></defs></svg>
-                <span class="ml-buy-box__atc-text">ADD TO CART</span>
+                <span class="ml-buy-box__atc-text">SELECT A SCENT</span>
                 <span class="ml-buy-box__atc-price">$39</span>
               </button>
             </div>
           </div>
           <div class="ml-buy-box__shipping">Standard shipping: $5.99</div>
           <div class="ml-buy-box__trust">
-            <div class="ml-buy-box__trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#5FAF8C"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="white"/></svg>
-              <span>Secure Checkout</span>
-            </div>
-            <div class="ml-buy-box__trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#5FAF8C"/><path d="M20 12H4v-2h16v2z" fill="white" opacity=".5"/></svg>
-              <span>Free Returns</span>
-            </div>
+            <div class="ml-buy-box__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#5FAF8C"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="white"/></svg><span>Secure Checkout</span></div>
+            <div class="ml-buy-box__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#5FAF8C"/><path d="M20 12H4v-2h16v2z" fill="white" opacity=".5"/></svg><span>Free Returns</span></div>
           </div>
         </div>
       </div>
 
       <!-- ═══ CARD 2: 3-Bottle Bundle (FEATURED) ═══ -->
-      <div class="ml-buy-box ml-buy-box--featured">
+      <div class="ml-buy-box ml-buy-box--featured" data-bundle-size="3">
         <div class="ml-buy-box__promo" style="background: linear-gradient(90deg, #5FAF8C 0%, #3D8B6A 100%);">
           <p class="ml-buy-box__promo-text">SAVE 15% — Mix & Match Any 3 Scents</p>
         </div>
-        <div class="ml-buy-box__content" style="--border-color: rgba(95,175,140,0.25); --accent-color: #5FAF8C; --text-color: #2C2C2C;">
+        <div class="ml-buy-box__content">
           <h3 class="ml-buy-box__title">3-Bottle Bundle</h3>
-          <div class="ml-buy-box__image-wrapper">
-            <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/HundredsHaveStarted-2_1.png?v=1767213146" alt="3-Bottle Bundle" class="ml-buy-box__image" width="400" height="400" loading="lazy">
+
+          <!-- SCENT PICKER: Multi Select -->
+          <div class="ml-scent-picker ml-scent-picker--multi" data-required="3">
+            <div class="ml-scent-picker__label">Pick your 3 scents: <span class="ml-scent-picker__count-display">0 of 3</span></div>
+            <div class="ml-scent-picker__options">
+              <div class="ml-scent-picker__row" data-scent="Luxe Blanc">
+                <img class="ml-scent-picker__row-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Luxe_Blanc.png?v=1767456346" alt="Luxe Blanc">
+                <div class="ml-scent-picker__row-info">
+                  <div class="ml-scent-picker__row-name">Luxe Blanc</div>
+                  <div class="ml-scent-picker__row-notes">Cotton flower, iris, soft musk</div>
+                </div>
+                <div class="ml-scent-picker__row-controls">
+                  <button class="ml-scent-picker__row-btn" data-action="minus" disabled>-</button>
+                  <span class="ml-scent-picker__row-count">0</span>
+                  <button class="ml-scent-picker__row-btn" data-action="plus">+</button>
+                </div>
+              </div>
+              <div class="ml-scent-picker__row" data-scent="Belle Vie">
+                <img class="ml-scent-picker__row-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Belle_Vie.png?v=1767456283" alt="Belle Vie">
+                <div class="ml-scent-picker__row-info">
+                  <div class="ml-scent-picker__row-name">Belle Vie</div>
+                  <div class="ml-scent-picker__row-notes">Peach blossom, cr&egrave;me br&ucirc;l&eacute;e</div>
+                </div>
+                <div class="ml-scent-picker__row-controls">
+                  <button class="ml-scent-picker__row-btn" data-action="minus" disabled>-</button>
+                  <span class="ml-scent-picker__row-count">0</span>
+                  <button class="ml-scent-picker__row-btn" data-action="plus">+</button>
+                </div>
+              </div>
+              <div class="ml-scent-picker__row" data-scent="Fleur Sombre">
+                <img class="ml-scent-picker__row-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Fleur_Sombre.png?v=1767456322" alt="Fleur Sombre">
+                <div class="ml-scent-picker__row-info">
+                  <div class="ml-scent-picker__row-name">Fleur Sombre</div>
+                  <div class="ml-scent-picker__row-notes">Smoked rose, blackcurrant, amber</div>
+                </div>
+                <div class="ml-scent-picker__row-controls">
+                  <button class="ml-scent-picker__row-btn" data-action="minus" disabled>-</button>
+                  <span class="ml-scent-picker__row-count">0</span>
+                  <button class="ml-scent-picker__row-btn" data-action="plus">+</button>
+                </div>
+              </div>
+              <div class="ml-scent-picker__row" data-scent="Douceur Vanillee">
+                <img class="ml-scent-picker__row-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Douceur_Vanillee.png?v=1767456240" alt="Douceur Vanillee">
+                <div class="ml-scent-picker__row-info">
+                  <div class="ml-scent-picker__row-name">Douceur Vanill&eacute;e</div>
+                  <div class="ml-scent-picker__row-notes">Vanilla orchid, almond milk, cashmere</div>
+                </div>
+                <div class="ml-scent-picker__row-controls">
+                  <button class="ml-scent-picker__row-btn" data-action="minus" disabled>-</button>
+                  <span class="ml-scent-picker__row-count">0</span>
+                  <button class="ml-scent-picker__row-btn" data-action="plus">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="ml-scent-picker__progress">
+              <div class="ml-scent-picker__progress-bar"><div class="ml-scent-picker__progress-fill" style="width: 0%"></div></div>
+              <span class="ml-scent-picker__progress-text ml-scent-picker__progress-text--incomplete">0 / 3</span>
+            </div>
           </div>
+
           <div class="ml-buy-box__features">
-            <div class="ml-buy-box__feature">
-              <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
-              <span>3 Full-Size Bottles (32oz each)</span>
-              <span class="ml-buy-box__feature-price"><span style="text-decoration:line-through;opacity:.5">$117</span> $99</span>
-            </div>
-            <div class="ml-buy-box__feature">
-              <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
-              <span>Mix & match any scents</span>
-            </div>
             <div class="ml-buy-box__feature">
               <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
               <span><strong>FREE</strong> shipping</span>
@@ -277,13 +407,9 @@
           <hr class="ml-buy-box__divider">
           <div class="ml-buy-box__price-row">
             <div class="ml-buy-box__quantity-selector">
-              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--minus" aria-label="Decrease quantity">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M12.28 7.72H1.47a.72.72 0 110-1.44h10.81a.72.72 0 110 1.44Z"/></svg>
-              </button>
+              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--minus" aria-label="Decrease quantity"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M12.28 7.72H1.47a.72.72 0 110-1.44h10.81a.72.72 0 110 1.44Z"/></svg></button>
               <span class="ml-buy-box__qty-value">1</span>
-              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--plus" aria-label="Increase quantity">
-                <svg width="13" height="14" viewBox="0 0 13 14" fill="currentColor"><path d="M11.69 6.25H7V1.58a.75.75 0 10-1.5 0v4.67H.88a.75.75 0 100 1.5H5.5v4.64a.75.75 0 101.5 0V7.75h4.69a.75.75 0 100-1.5Z"/></svg>
-              </button>
+              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--plus" aria-label="Increase quantity"><svg width="13" height="14" viewBox="0 0 13 14" fill="currentColor"><path d="M11.69 6.25H7V1.58a.75.75 0 10-1.5 0v4.67H.88a.75.75 0 100 1.5H5.5v4.64a.75.75 0 101.5 0V7.75h4.69a.75.75 0 100-1.5Z"/></svg></button>
             </div>
             <div class="ml-buy-box__prices">
               <span class="ml-buy-box__compare-price">$117</span>
@@ -293,47 +419,89 @@
           <div class="ml-buy-box__per-unit">Just $33/bottle (save $18)</div>
           <div class="ml-buy-box__atc">
             <div class="ml-buy-box__atc-wrapper">
-              <button class="ml-buy-box__atc-button" data-price="99" data-compare-price="117" onclick="event.preventDefault();">
+              <button class="ml-buy-box__atc-button ml-buy-box__atc-button--disabled" data-price="99" data-compare-price="117" onclick="event.preventDefault();">
                 <svg class="ml-buy-box__cart-icon" width="21" height="21" viewBox="0 0 21 21" fill="none"><g clip-path="url(#c2)"><path d="M1.25 1.09a.83.83 0 000 1.67h1.48c.12 0 .24.04.34.11.1.07.17.17.21.28l2.75 8.24c.12.37.14.76.04 1.13l-.22.91a1.67 1.67 0 001.07 1.65c.2.08.41.12.63.12h10a.83.83 0 000-1.67H7.91a.33.33 0 01-.32-.29l.17-.68a.33.33 0 01.32-.24h8.93a.83.83 0 00.79-.57l2.22-6.67a.83.83 0 00-.79-1.1H5.88a.33.33 0 01-.32-.24l-.79-2.37a.83.83 0 00-.79-.57H1.25ZM7.08 16.92a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Zm10 0a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Z" fill="currentColor"/></g><defs><clipPath id="c2"><rect width="20" height="20" fill="white" transform="translate(.41 .26)"/></clipPath></defs></svg>
-                <span class="ml-buy-box__atc-text">ADD TO CART</span>
+                <span class="ml-buy-box__atc-text">SELECT 3 SCENTS</span>
                 <span class="ml-buy-box__atc-price">$99</span>
               </button>
             </div>
           </div>
           <div class="ml-buy-box__shipping"><strong>FREE shipping</strong> on this order</div>
           <div class="ml-buy-box__trust">
-            <div class="ml-buy-box__trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#5FAF8C"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="white"/></svg>
-              <span>Secure Checkout</span>
-            </div>
-            <div class="ml-buy-box__trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#5FAF8C"/><path d="M20 12H4v-2h16v2z" fill="white" opacity=".5"/></svg>
-              <span>Free Shipping</span>
-            </div>
+            <div class="ml-buy-box__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#5FAF8C"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="white"/></svg><span>Secure Checkout</span></div>
+            <div class="ml-buy-box__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#5FAF8C"/><path d="M20 12H4v-2h16v2z" fill="white" opacity=".5"/></svg><span>Free Shipping</span></div>
           </div>
         </div>
       </div>
 
       <!-- ═══ CARD 3: 6-Bottle Collection ═══ -->
-      <div class="ml-buy-box">
+      <div class="ml-buy-box" data-bundle-size="6">
         <div class="ml-buy-box__promo" style="background: linear-gradient(90deg, #2C2C2C 0%, #444444 100%);">
           <p class="ml-buy-box__promo-text">BEST VALUE — Save 25%</p>
         </div>
-        <div class="ml-buy-box__content" style="--border-color: rgba(95,175,140,0.25); --accent-color: #5FAF8C; --text-color: #2C2C2C;">
+        <div class="ml-buy-box__content">
           <h3 class="ml-buy-box__title">6-Bottle Collection</h3>
-          <div class="ml-buy-box__image-wrapper">
-            <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/HundredsHaveStarted-2_1.png?v=1767213146" alt="6-Bottle Collection" class="ml-buy-box__image" width="400" height="400" loading="lazy">
+
+          <!-- SCENT PICKER: Multi Select -->
+          <div class="ml-scent-picker ml-scent-picker--multi" data-required="6">
+            <div class="ml-scent-picker__label">Pick your 6 scents: <span class="ml-scent-picker__count-display">0 of 6</span></div>
+            <div class="ml-scent-picker__options">
+              <div class="ml-scent-picker__row" data-scent="Luxe Blanc">
+                <img class="ml-scent-picker__row-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Luxe_Blanc.png?v=1767456346" alt="Luxe Blanc">
+                <div class="ml-scent-picker__row-info">
+                  <div class="ml-scent-picker__row-name">Luxe Blanc</div>
+                  <div class="ml-scent-picker__row-notes">Cotton flower, iris, soft musk</div>
+                </div>
+                <div class="ml-scent-picker__row-controls">
+                  <button class="ml-scent-picker__row-btn" data-action="minus" disabled>-</button>
+                  <span class="ml-scent-picker__row-count">0</span>
+                  <button class="ml-scent-picker__row-btn" data-action="plus">+</button>
+                </div>
+              </div>
+              <div class="ml-scent-picker__row" data-scent="Belle Vie">
+                <img class="ml-scent-picker__row-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Belle_Vie.png?v=1767456283" alt="Belle Vie">
+                <div class="ml-scent-picker__row-info">
+                  <div class="ml-scent-picker__row-name">Belle Vie</div>
+                  <div class="ml-scent-picker__row-notes">Peach blossom, cr&egrave;me br&ucirc;l&eacute;e</div>
+                </div>
+                <div class="ml-scent-picker__row-controls">
+                  <button class="ml-scent-picker__row-btn" data-action="minus" disabled>-</button>
+                  <span class="ml-scent-picker__row-count">0</span>
+                  <button class="ml-scent-picker__row-btn" data-action="plus">+</button>
+                </div>
+              </div>
+              <div class="ml-scent-picker__row" data-scent="Fleur Sombre">
+                <img class="ml-scent-picker__row-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Fleur_Sombre.png?v=1767456322" alt="Fleur Sombre">
+                <div class="ml-scent-picker__row-info">
+                  <div class="ml-scent-picker__row-name">Fleur Sombre</div>
+                  <div class="ml-scent-picker__row-notes">Smoked rose, blackcurrant, amber</div>
+                </div>
+                <div class="ml-scent-picker__row-controls">
+                  <button class="ml-scent-picker__row-btn" data-action="minus" disabled>-</button>
+                  <span class="ml-scent-picker__row-count">0</span>
+                  <button class="ml-scent-picker__row-btn" data-action="plus">+</button>
+                </div>
+              </div>
+              <div class="ml-scent-picker__row" data-scent="Douceur Vanillee">
+                <img class="ml-scent-picker__row-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Douceur_Vanillee.png?v=1767456240" alt="Douceur Vanillee">
+                <div class="ml-scent-picker__row-info">
+                  <div class="ml-scent-picker__row-name">Douceur Vanill&eacute;e</div>
+                  <div class="ml-scent-picker__row-notes">Vanilla orchid, almond milk, cashmere</div>
+                </div>
+                <div class="ml-scent-picker__row-controls">
+                  <button class="ml-scent-picker__row-btn" data-action="minus" disabled>-</button>
+                  <span class="ml-scent-picker__row-count">0</span>
+                  <button class="ml-scent-picker__row-btn" data-action="plus">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="ml-scent-picker__progress">
+              <div class="ml-scent-picker__progress-bar"><div class="ml-scent-picker__progress-fill" style="width: 0%"></div></div>
+              <span class="ml-scent-picker__progress-text ml-scent-picker__progress-text--incomplete">0 / 6</span>
+            </div>
           </div>
+
           <div class="ml-buy-box__features">
-            <div class="ml-buy-box__feature">
-              <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
-              <span>6 Full-Size Bottles (32oz each)</span>
-              <span class="ml-buy-box__feature-price"><span style="text-decoration:line-through;opacity:.5">$234</span> $175</span>
-            </div>
-            <div class="ml-buy-box__feature">
-              <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
-              <span>Mix & match all 4 scents</span>
-            </div>
             <div class="ml-buy-box__feature">
               <svg class="ml-buy-box__check" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#5FAF8C"/><path d="M16.8 7L18.2 8.8L14.7 12.3L10.5 16.6L6 12.1L7.7 10.4L10.5 13.2L16.8 7Z" fill="white"/></svg>
               <span><strong>FREE</strong> priority shipping</span>
@@ -354,13 +522,9 @@
           <hr class="ml-buy-box__divider">
           <div class="ml-buy-box__price-row">
             <div class="ml-buy-box__quantity-selector">
-              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--minus" aria-label="Decrease quantity">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M12.28 7.72H1.47a.72.72 0 110-1.44h10.81a.72.72 0 110 1.44Z"/></svg>
-              </button>
+              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--minus" aria-label="Decrease quantity"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M12.28 7.72H1.47a.72.72 0 110-1.44h10.81a.72.72 0 110 1.44Z"/></svg></button>
               <span class="ml-buy-box__qty-value">1</span>
-              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--plus" aria-label="Increase quantity">
-                <svg width="13" height="14" viewBox="0 0 13 14" fill="currentColor"><path d="M11.69 6.25H7V1.58a.75.75 0 10-1.5 0v4.67H.88a.75.75 0 100 1.5H5.5v4.64a.75.75 0 101.5 0V7.75h4.69a.75.75 0 100-1.5Z"/></svg>
-              </button>
+              <button class="ml-buy-box__qty-btn ml-buy-box__qty-btn--plus" aria-label="Increase quantity"><svg width="13" height="14" viewBox="0 0 13 14" fill="currentColor"><path d="M11.69 6.25H7V1.58a.75.75 0 10-1.5 0v4.67H.88a.75.75 0 100 1.5H5.5v4.64a.75.75 0 101.5 0V7.75h4.69a.75.75 0 100-1.5Z"/></svg></button>
             </div>
             <div class="ml-buy-box__prices">
               <span class="ml-buy-box__compare-price">$234</span>
@@ -370,23 +534,17 @@
           <div class="ml-buy-box__per-unit">Just $29/bottle (save $59)</div>
           <div class="ml-buy-box__atc">
             <div class="ml-buy-box__atc-wrapper">
-              <button class="ml-buy-box__atc-button" data-price="175" data-compare-price="234" onclick="event.preventDefault();">
+              <button class="ml-buy-box__atc-button ml-buy-box__atc-button--disabled" data-price="175" data-compare-price="234" onclick="event.preventDefault();">
                 <svg class="ml-buy-box__cart-icon" width="21" height="21" viewBox="0 0 21 21" fill="none"><g clip-path="url(#c3)"><path d="M1.25 1.09a.83.83 0 000 1.67h1.48c.12 0 .24.04.34.11.1.07.17.17.21.28l2.75 8.24c.12.37.14.76.04 1.13l-.22.91a1.67 1.67 0 001.07 1.65c.2.08.41.12.63.12h10a.83.83 0 000-1.67H7.91a.33.33 0 01-.32-.29l.17-.68a.33.33 0 01.32-.24h8.93a.83.83 0 00.79-.57l2.22-6.67a.83.83 0 00-.79-1.1H5.88a.33.33 0 01-.32-.24l-.79-2.37a.83.83 0 00-.79-.57H1.25ZM7.08 16.92a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Zm10 0a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Z" fill="currentColor"/></g><defs><clipPath id="c3"><rect width="20" height="20" fill="white" transform="translate(.41 .26)"/></clipPath></defs></svg>
-                <span class="ml-buy-box__atc-text">ADD TO CART</span>
+                <span class="ml-buy-box__atc-text">SELECT 6 SCENTS</span>
                 <span class="ml-buy-box__atc-price">$175</span>
               </button>
             </div>
           </div>
           <div class="ml-buy-box__shipping"><strong>FREE priority shipping</strong> on this order</div>
           <div class="ml-buy-box__trust">
-            <div class="ml-buy-box__trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#5FAF8C"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="white"/></svg>
-              <span>Secure Checkout</span>
-            </div>
-            <div class="ml-buy-box__trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#5FAF8C"/><path d="M20 12H4v-2h16v2z" fill="white" opacity=".5"/></svg>
-              <span>Free Shipping</span>
-            </div>
+            <div class="ml-buy-box__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#5FAF8C"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="white"/></svg><span>Secure Checkout</span></div>
+            <div class="ml-buy-box__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#5FAF8C"/><path d="M20 12H4v-2h16v2z" fill="white" opacity=".5"/></svg><span>Free Shipping</span></div>
           </div>
         </div>
       </div>
@@ -404,33 +562,141 @@
 
 <script>
 (function() {
-  /* Countdown Timer */
+  /* ── Countdown Timer ── */
   var countdownEl = document.querySelector('.ml-buy-boxes__countdown');
   if (countdownEl) {
     var now = new Date();
     var target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59).getTime();
     function updateCountdown() {
-      var now2 = Date.now();
-      var diff = target - now2;
-      if (diff <= 0) { target = now2 + 86400000; diff = target - now2; }
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor((diff % 86400000) / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      var s = Math.floor((diff % 60000) / 1000);
-      var dEl = countdownEl.querySelector('[data-days]');
-      var hEl = countdownEl.querySelector('[data-hours]');
-      var mEl = countdownEl.querySelector('[data-minutes]');
-      var sEl = countdownEl.querySelector('[data-seconds]');
-      if (dEl) dEl.textContent = String(d).padStart(2, '0');
-      if (hEl) hEl.textContent = String(h).padStart(2, '0');
-      if (mEl) mEl.textContent = String(m).padStart(2, '0');
-      if (sEl) sEl.textContent = String(s).padStart(2, '0');
+      var n = Date.now(), diff = target - n;
+      if (diff <= 0) { target = n + 86400000; diff = target - n; }
+      var d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000),
+          m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
+      var dE=countdownEl.querySelector('[data-days]'), hE=countdownEl.querySelector('[data-hours]'),
+          mE=countdownEl.querySelector('[data-minutes]'), sE=countdownEl.querySelector('[data-seconds]');
+      if(dE)dE.textContent=String(d).padStart(2,'0'); if(hE)hE.textContent=String(h).padStart(2,'0');
+      if(mE)mE.textContent=String(m).padStart(2,'0'); if(sE)sE.textContent=String(s).padStart(2,'0');
     }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    updateCountdown(); setInterval(updateCountdown, 1000);
   }
 
-  /* Quantity Selectors */
+  /* ── Scent Picker Logic ── */
+  document.querySelectorAll('.ml-buy-box').forEach(function(box) {
+    var picker = box.querySelector('.ml-scent-picker');
+    var atcBtn = box.querySelector('.ml-buy-box__atc-button');
+    var atcText = box.querySelector('.ml-buy-box__atc-text');
+    if (!picker) return;
+
+    var required = parseInt(picker.dataset.required);
+    var isSingle = picker.classList.contains('ml-scent-picker--single');
+
+    function getTotal() {
+      if (isSingle) {
+        return picker.querySelector('.ml-scent-picker__option--selected') ? 1 : 0;
+      }
+      var total = 0;
+      picker.querySelectorAll('.ml-scent-picker__row-count').forEach(function(c) { total += parseInt(c.textContent); });
+      return total;
+    }
+
+    function updateAtcState() {
+      var total = getTotal();
+      var isComplete = total >= required;
+      if (isComplete) {
+        atcBtn.classList.remove('ml-buy-box__atc-button--disabled');
+        atcText.textContent = 'ADD TO CART';
+      } else {
+        atcBtn.classList.add('ml-buy-box__atc-button--disabled');
+        if (isSingle) {
+          atcText.textContent = 'SELECT A SCENT';
+        } else {
+          atcText.textContent = 'SELECT ' + required + ' SCENTS';
+        }
+      }
+    }
+
+    function updateMultiUI() {
+      var total = getTotal();
+      var countDisplay = picker.querySelector('.ml-scent-picker__count-display');
+      var progressFill = picker.querySelector('.ml-scent-picker__progress-fill');
+      var progressText = picker.querySelector('.ml-scent-picker__progress-text');
+
+      if (countDisplay) countDisplay.textContent = total + ' of ' + required;
+      if (progressFill) progressFill.style.width = Math.min((total / required) * 100, 100) + '%';
+      if (progressText) {
+        progressText.textContent = total + ' / ' + required;
+        if (total >= required) {
+          progressText.className = 'ml-scent-picker__progress-text ml-scent-picker__progress-text--complete';
+        } else {
+          progressText.className = 'ml-scent-picker__progress-text ml-scent-picker__progress-text--incomplete';
+        }
+      }
+
+      /* Disable plus buttons when full */
+      picker.querySelectorAll('.ml-scent-picker__row').forEach(function(row) {
+        var plusBtn = row.querySelector('[data-action="plus"]');
+        var minusBtn = row.querySelector('[data-action="minus"]');
+        var countEl = row.querySelector('.ml-scent-picker__row-count');
+        var count = parseInt(countEl.textContent);
+        var imgEl = row.querySelector('.ml-scent-picker__row-img');
+
+        plusBtn.disabled = total >= required;
+        minusBtn.disabled = count <= 0;
+        if (count > 0) { imgEl.classList.add('ml-scent-picker__row-img--active'); }
+        else { imgEl.classList.remove('ml-scent-picker__row-img--active'); }
+      });
+
+      updateAtcState();
+    }
+
+    /* Single select click handlers */
+    if (isSingle) {
+      picker.querySelectorAll('.ml-scent-picker__option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          picker.querySelectorAll('.ml-scent-picker__option').forEach(function(o) {
+            o.classList.remove('ml-scent-picker__option--selected');
+          });
+          opt.classList.add('ml-scent-picker__option--selected');
+          updateAtcState();
+        });
+      });
+    }
+
+    /* Multi select +/- handlers */
+    if (!isSingle) {
+      picker.querySelectorAll('.ml-scent-picker__row-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var row = btn.closest('.ml-scent-picker__row');
+          var countEl = row.querySelector('.ml-scent-picker__row-count');
+          var count = parseInt(countEl.textContent);
+          var action = btn.dataset.action;
+          var total = getTotal();
+
+          if (action === 'plus' && total < required) {
+            countEl.textContent = count + 1;
+          } else if (action === 'minus' && count > 0) {
+            countEl.textContent = count - 1;
+          }
+          updateMultiUI();
+        });
+      });
+      updateMultiUI();
+    }
+
+    /* ATC validation: shake if not complete */
+    atcBtn.addEventListener('click', function(e) {
+      if (atcBtn.classList.contains('ml-buy-box__atc-button--disabled')) {
+        e.preventDefault();
+        picker.classList.add('ml-scent-picker--shake');
+        setTimeout(function() { picker.classList.remove('ml-scent-picker--shake'); }, 400);
+        return;
+      }
+    });
+
+    updateAtcState();
+  });
+
+  /* ── Quantity Selectors ── */
   document.querySelectorAll('.ml-buy-box').forEach(function(box) {
     var qtyLabel = box.querySelector('.ml-buy-box__qty-value');
     var minusBtn = box.querySelector('.ml-buy-box__qty-btn--minus');
@@ -457,17 +723,16 @@
     if (plusBtn) plusBtn.addEventListener('click', function() { updatePrices(qty + 1); });
   });
 
-  /* Confetti on ATC */
+  /* ── Confetti on ATC ── */
   document.addEventListener('click', function(e) {
-    if (!e.target.closest('.ml-buy-box__atc-button')) return;
+    var btn = e.target.closest('.ml-buy-box__atc-button');
+    if (!btn || btn.classList.contains('ml-buy-box__atc-button--disabled')) return;
     if (typeof window.confetti !== 'function') return;
     var count = 150, defaults = { origin: { y: 0.7 } };
     function fire(r, o) { window.confetti(Object.assign({}, defaults, o, { particleCount: Math.floor(count * r) })); }
-    fire(0.25, { spread: 26, startVelocity: 55 });
-    fire(0.2, { spread: 60 });
-    fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-    fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-    fire(0.1, { spread: 120, startVelocity: 45 });
+    fire(0.25,{spread:26,startVelocity:55}); fire(0.2,{spread:60});
+    fire(0.35,{spread:100,decay:0.91,scalar:0.8}); fire(0.1,{spread:120,startVelocity:25,decay:0.92,scalar:1.2});
+    fire(0.1,{spread:120,startVelocity:45});
   });
 })();
 </script>
