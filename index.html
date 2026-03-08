@@ -223,6 +223,104 @@
     /* Shake for validation */
     @keyframes ml-shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
     .ml-scent-picker--shake { animation: ml-shake 0.4s ease; }
+
+    /* ══════════════════════════════════
+       OFFER BOX (PDP-Style)
+       ══════════════════════════════════ */
+    .ml-offer { padding: 20px 20px 60px; background: #FFF8F0; }
+    .ml-offer__divider { display: flex; align-items: center; justify-content: center; gap: 16px; max-width: 600px; margin: 0 auto 40px; }
+    .ml-offer__divider-line { flex: 1; height: 1px; background: #d4cfc8; }
+    .ml-offer__divider-text { font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+    .ml-offer__container { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 40px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column; }
+
+    /* Gallery */
+    .ml-offer__gallery { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 30px; background: linear-gradient(160deg, #f9f5f0 0%, #efe9e1 100%); position: relative; }
+    .ml-offer__main-image { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: transform 0.4s ease; }
+    .ml-offer__main-image:hover { transform: scale(1.04); }
+    .ml-offer__scent-name-display { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: #2C2C2C; margin-top: 16px; text-align: center; transition: opacity 0.2s; }
+    .ml-offer__scent-notes-display { font-family: 'Open Sans', sans-serif; font-size: 13px; color: #888; margin-top: 4px; text-align: center; font-style: italic; }
+
+    /* Box */
+    .ml-offer__box { padding: 28px 22px; display: flex; flex-direction: column; gap: 16px; }
+
+    /* Rating */
+    .ml-offer__rating { display: flex; align-items: center; gap: 8px; }
+    .ml-offer__stars { display: flex; gap: 1px; color: #F5A623; font-size: 18px; line-height: 1; }
+    .ml-offer__review-count { font-family: 'Open Sans', sans-serif; font-size: 13px; color: #888; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* Title */
+    .ml-offer__title { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 800; color: #2C2C2C; line-height: 1.2; margin: -4px 0 0; }
+    .ml-offer__subtitle { font-family: 'Open Sans', sans-serif; font-size: 14px; color: #666; margin: -8px 0 0; }
+
+    /* Section Labels */
+    .ml-offer__section-label { font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #2C2C2C; margin-bottom: 8px; }
+    .ml-offer__section-label span { font-weight: 400; color: #666; text-transform: none; letter-spacing: 0; }
+
+    /* Scent Swatches */
+    .ml-offer__scent-swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+    .ml-offer__swatch { width: 50px; height: 50px; border-radius: 50%; border: 3px solid #e0e0e0; cursor: pointer; object-fit: cover; transition: border-color 0.15s, transform 0.15s; }
+    .ml-offer__swatch:hover { transform: scale(1.1); border-color: #aaa; }
+    .ml-offer__swatch--active { border-color: #5FAF8C; box-shadow: 0 0 0 2px rgba(95,175,140,0.3); }
+
+    /* Size Pills */
+    .ml-offer__size-pills { display: flex; gap: 0; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; }
+    .ml-offer__size-pill { flex: 1; padding: 12px 6px; text-align: center; cursor: pointer; background: #fff; border: none; border-right: 1px solid #e0e0e0; transition: all 0.15s; position: relative; }
+    .ml-offer__size-pill:last-child { border-right: none; }
+    .ml-offer__size-pill--active { background: #5FAF8C; color: #fff; }
+    .ml-offer__size-pill-label { display: block; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 700; color: #2C2C2C; }
+    .ml-offer__size-pill--active .ml-offer__size-pill-label { color: #fff; }
+    .ml-offer__size-pill-sub { display: block; font-family: 'Open Sans', sans-serif; font-size: 11px; font-weight: 400; color: #888; margin-top: 2px; }
+    .ml-offer__size-pill--active .ml-offer__size-pill-sub { color: rgba(255,255,255,0.85); }
+    .ml-offer__size-pill-badge { position: absolute; top: -1px; right: -1px; background: #2C2C2C; color: #fff; font-family: 'Open Sans', sans-serif; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 0 8px 0 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+    .ml-offer__size-pill--active .ml-offer__size-pill-badge { background: #fff; color: #5FAF8C; }
+
+    /* Purchase Type Toggle */
+    .ml-offer__purchase-toggle { display: flex; flex-direction: column; gap: 0; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; }
+    .ml-offer__purchase-option { display: flex; align-items: center; gap: 12px; padding: 14px 16px; cursor: pointer; transition: background 0.15s; border-bottom: 1px solid #e8e8e8; }
+    .ml-offer__purchase-option:last-child { border-bottom: none; }
+    .ml-offer__purchase-option--active { background: rgba(95,175,140,0.06); }
+    .ml-offer__radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.15s; }
+    .ml-offer__purchase-option--active .ml-offer__radio { border-color: #5FAF8C; }
+    .ml-offer__radio-dot { width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: background 0.15s; }
+    .ml-offer__purchase-option--active .ml-offer__radio-dot { background: #5FAF8C; }
+    .ml-offer__purchase-info { flex: 1; min-width: 0; }
+    .ml-offer__purchase-label { font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 700; color: #2C2C2C; }
+    .ml-offer__purchase-detail { font-family: 'Open Sans', sans-serif; font-size: 12px; color: #888; margin-top: 1px; }
+    .ml-offer__discount-badge { display: inline-block; background: #5FAF8C; color: #fff; font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+    .ml-offer__option-price { font-family: 'Open Sans', sans-serif; font-size: 16px; font-weight: 800; color: #2C2C2C; margin-left: auto; white-space: nowrap; flex-shrink: 0; }
+
+    /* Frequency */
+    .ml-offer__frequency { display: flex; flex-direction: column; gap: 6px; }
+    .ml-offer__frequency-select { width: 100%; padding: 11px 36px 11px 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-family: 'Open Sans', sans-serif; font-size: 14px; color: #2C2C2C; background: #fff; cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%232C2C2C' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; transition: border-color 0.15s; }
+    .ml-offer__frequency-select:focus { border-color: #5FAF8C; outline: none; }
+
+    /* Price Block */
+    .ml-offer__price-block { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+    .ml-offer__final-price { font-family: 'Fraunces', serif; font-size: 34px; font-weight: 800; color: #2C2C2C; line-height: 1; }
+    .ml-offer__original-price { font-family: 'Open Sans', sans-serif; font-size: 18px; font-weight: 600; color: #999; text-decoration: line-through; }
+    .ml-offer__unit-price { font-family: 'Open Sans', sans-serif; font-size: 13px; font-weight: 600; color: #5FAF8C; width: 100%; margin-top: -4px; }
+
+    /* ATC */
+    .ml-offer__atc-btn { width: 100%; height: 58px; border: none; border-radius: 10px; background: #5FAF8C; color: #fff; font-family: 'Open Sans', sans-serif; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 14px rgba(95,175,140,0.3); transition: transform 0.1s, box-shadow 0.1s; }
+    .ml-offer__atc-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(95,175,140,0.4); }
+    .ml-offer__atc-btn:active { transform: translateY(0); }
+
+    /* Trust */
+    .ml-offer__trust { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; padding-top: 4px; }
+    .ml-offer__trust-item { display: flex; align-items: center; gap: 5px; font-family: 'Open Sans', sans-serif; font-size: 11px; font-weight: 600; color: #777; }
+    .ml-offer__trust-icon { flex-shrink: 0; }
+    .ml-offer__guarantee-text { text-align: center; font-family: 'Open Sans', sans-serif; font-size: 12px; color: #999; margin-top: -4px; }
+
+    /* Responsive: Tablet+ */
+    @media (min-width: 768px) {
+      .ml-offer { padding: 20px 30px 80px; }
+      .ml-offer__container { flex-direction: row; }
+      .ml-offer__gallery { flex: 0 0 42%; min-height: 520px; padding: 50px 40px; }
+      .ml-offer__main-image { width: 280px; height: 280px; }
+      .ml-offer__box { flex: 1; padding: 36px 32px; }
+      .ml-offer__title { font-size: 30px; }
+      .ml-offer__final-price { font-size: 38px; }
+    }
   </style>
 </head>
 <body>
@@ -560,6 +658,137 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════
+     OFFER BOX (PDP-Style)
+     ═══════════════════════════════════ -->
+<div class="ml-offer" id="ml-offer-box">
+  <div class="ml-offer__divider">
+    <div class="ml-offer__divider-line"></div>
+    <span class="ml-offer__divider-text">Or build your order</span>
+    <div class="ml-offer__divider-line"></div>
+  </div>
+
+  <div class="ml-offer__container">
+    <!-- Gallery -->
+    <div class="ml-offer__gallery">
+      <img class="ml-offer__main-image" id="ml-offer-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Luxe_Blanc.png?v=1767456346" alt="Luxe Blanc">
+      <div class="ml-offer__scent-name-display" id="ml-offer-scent-name">Luxe Blanc</div>
+      <div class="ml-offer__scent-notes-display" id="ml-offer-scent-notes">Cotton flower, iris, soft musk</div>
+    </div>
+
+    <!-- Buy Box -->
+    <div class="ml-offer__box">
+      <!-- Rating -->
+      <div class="ml-offer__rating">
+        <div class="ml-offer__stars">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F5A623"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F5A623"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F5A623"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F5A623"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F5A623"/></svg>
+        </div>
+        <span class="ml-offer__review-count">2,847 reviews</span>
+      </div>
+
+      <h2 class="ml-offer__title">Maison Laundrin</h2>
+      <p class="ml-offer__subtitle">Luxury Fragrance Laundry Detergent &middot; 32oz</p>
+
+      <!-- Scent Selector -->
+      <div class="ml-offer__scent-section">
+        <div class="ml-offer__section-label">Scent: <span id="ml-offer-selected-scent">Luxe Blanc</span></div>
+        <div class="ml-offer__scent-swatches">
+          <img class="ml-offer__swatch ml-offer__swatch--active" data-scent="Luxe Blanc" data-notes="Cotton flower, iris, soft musk" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Luxe_Blanc.png?v=1767456346" alt="Luxe Blanc">
+          <img class="ml-offer__swatch" data-scent="Belle Vie" data-notes="Peach blossom, cr&egrave;me br&ucirc;l&eacute;e" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Belle_Vie.png?v=1767456283" alt="Belle Vie">
+          <img class="ml-offer__swatch" data-scent="Fleur Sombre" data-notes="Smoked rose, blackcurrant, amber" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Fleur_Sombre.png?v=1767456322" alt="Fleur Sombre">
+          <img class="ml-offer__swatch" data-scent="Douceur Vanill&eacute;e" data-notes="Vanilla orchid, almond milk, cashmere" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/Douceur_Vanillee.png?v=1767456240" alt="Douceur Vanill&eacute;e">
+        </div>
+      </div>
+
+      <!-- Size Toggle -->
+      <div class="ml-offer__size-section">
+        <div class="ml-offer__section-label">Size:</div>
+        <div class="ml-offer__size-pills">
+          <button class="ml-offer__size-pill ml-offer__size-pill--active" data-size="1" data-price="39" data-compare="39">
+            <span class="ml-offer__size-pill-label">1 Bottle</span>
+            <span class="ml-offer__size-pill-sub">$39.00</span>
+          </button>
+          <button class="ml-offer__size-pill" data-size="3" data-price="99" data-compare="117">
+            <span class="ml-offer__size-pill-badge">Save 15%</span>
+            <span class="ml-offer__size-pill-label">3 Bottles</span>
+            <span class="ml-offer__size-pill-sub">$33/ea</span>
+          </button>
+          <button class="ml-offer__size-pill" data-size="6" data-price="175" data-compare="234">
+            <span class="ml-offer__size-pill-badge">Best Value</span>
+            <span class="ml-offer__size-pill-label">6 Bottles</span>
+            <span class="ml-offer__size-pill-sub">$29/ea</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Purchase Type -->
+      <div class="ml-offer__purchase-toggle">
+        <div class="ml-offer__purchase-option ml-offer__purchase-option--active" data-type="subscribe">
+          <div class="ml-offer__radio"><div class="ml-offer__radio-dot"></div></div>
+          <div class="ml-offer__purchase-info">
+            <div class="ml-offer__purchase-label">Subscribe &amp; Save <span class="ml-offer__discount-badge">Extra 10% off</span></div>
+            <div class="ml-offer__purchase-detail">Cancel or skip anytime</div>
+          </div>
+          <span class="ml-offer__option-price" id="ml-offer-sub-price">$35.10</span>
+        </div>
+        <div class="ml-offer__purchase-option" data-type="onetime">
+          <div class="ml-offer__radio"><div class="ml-offer__radio-dot"></div></div>
+          <div class="ml-offer__purchase-info">
+            <div class="ml-offer__purchase-label">One-time purchase</div>
+          </div>
+          <span class="ml-offer__option-price" id="ml-offer-otp-price">$39.00</span>
+        </div>
+      </div>
+
+      <!-- Frequency -->
+      <div class="ml-offer__frequency" id="ml-offer-frequency">
+        <div class="ml-offer__section-label">Delivery every:</div>
+        <select class="ml-offer__frequency-select">
+          <option>4 weeks</option>
+          <option selected>6 weeks</option>
+          <option>8 weeks</option>
+          <option>12 weeks</option>
+        </select>
+      </div>
+
+      <!-- Price -->
+      <div class="ml-offer__price-block">
+        <span class="ml-offer__final-price" id="ml-offer-final-price">$35.10</span>
+        <span class="ml-offer__original-price" id="ml-offer-original-price">$39.00</span>
+        <span class="ml-offer__unit-price" id="ml-offer-unit-price">$35.10/bottle &middot; 90+ loads</span>
+      </div>
+
+      <!-- ATC -->
+      <button class="ml-offer__atc-btn" id="ml-offer-atc">
+        <svg class="ml-offer__cart-icon" width="21" height="21" viewBox="0 0 21 21" fill="none"><g clip-path="url(#co1)"><path d="M1.25 1.09a.83.83 0 000 1.67h1.48c.12 0 .24.04.34.11.1.07.17.17.21.28l2.75 8.24c.12.37.14.76.04 1.13l-.22.91a1.67 1.67 0 001.07 1.65c.2.08.41.12.63.12h10a.83.83 0 000-1.67H7.91a.33.33 0 01-.32-.29l.17-.68a.33.33 0 01.32-.24h8.93a.83.83 0 00.79-.57l2.22-6.67a.83.83 0 00-.79-1.1H5.88a.33.33 0 01-.32-.24l-.79-2.37a.83.83 0 00-.79-.57H1.25ZM7.08 16.92a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Zm10 0a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Z" fill="currentColor"/></g><defs><clipPath id="co1"><rect width="20" height="20" fill="white" transform="translate(.41 .26)"/></clipPath></defs></svg>
+        ADD TO CART &mdash; <span id="ml-offer-atc-price">$35.10</span>
+      </button>
+
+      <!-- Trust -->
+      <div class="ml-offer__trust">
+        <div class="ml-offer__trust-item">
+          <svg class="ml-offer__trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#5FAF8C"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="white"/></svg>
+          <span>Secure Checkout</span>
+        </div>
+        <div class="ml-offer__trust-item">
+          <svg class="ml-offer__trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 8h-3V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-8 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z" fill="#5FAF8C"/></svg>
+          <span>Free Returns</span>
+        </div>
+        <div class="ml-offer__trust-item">
+          <svg class="ml-offer__trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h12v16z" fill="#5FAF8C"/><path d="M8 6h8v2H8V6zm0 4h8v2H8v-2z" fill="#5FAF8C" opacity=".5"/></svg>
+          <span>Free Shipping 3+</span>
+        </div>
+      </div>
+
+      <div class="ml-offer__guarantee-text">30-Day Happiness Guarantee &mdash; Love it or your money back.</div>
+    </div>
+  </div>
+</div>
+
 <script>
 (function() {
   /* ── Countdown Timer ── */
@@ -734,6 +963,108 @@
     fire(0.35,{spread:100,decay:0.91,scalar:0.8}); fire(0.1,{spread:120,startVelocity:25,decay:0.92,scalar:1.2});
     fire(0.1,{spread:120,startVelocity:45});
   });
+
+  /* ══════════════════════════════════
+     OFFER BOX LOGIC
+     ══════════════════════════════════ */
+  var offerBox = document.getElementById('ml-offer-box');
+  if (offerBox) {
+    var oState = {
+      scent: 'Luxe Blanc',
+      size: 1,
+      type: 'subscribe',
+      prices: { 1: { price: 39, compare: 39 }, 3: { price: 99, compare: 117 }, 6: { price: 175, compare: 234 } },
+      subDiscount: 0.10
+    };
+
+    var oEls = {
+      mainImg: document.getElementById('ml-offer-img'),
+      scentName: document.getElementById('ml-offer-scent-name'),
+      scentNotes: document.getElementById('ml-offer-scent-notes'),
+      selectedScent: document.getElementById('ml-offer-selected-scent'),
+      subPrice: document.getElementById('ml-offer-sub-price'),
+      otpPrice: document.getElementById('ml-offer-otp-price'),
+      frequency: document.getElementById('ml-offer-frequency'),
+      finalPrice: document.getElementById('ml-offer-final-price'),
+      originalPrice: document.getElementById('ml-offer-original-price'),
+      unitPrice: document.getElementById('ml-offer-unit-price'),
+      atcPrice: document.getElementById('ml-offer-atc-price')
+    };
+
+    function oUpdatePricing() {
+      var p = oState.prices[oState.size];
+      var otp = p.price;
+      var sub = Math.round(otp * (1 - oState.subDiscount) * 100) / 100;
+      var cmp = p.compare;
+      var final_, perBottle, showCompare;
+
+      if (oState.type === 'subscribe') {
+        final_ = sub;
+        perBottle = (sub / oState.size).toFixed(2);
+        showCompare = true;
+        oEls.frequency.style.display = '';
+      } else {
+        final_ = otp;
+        perBottle = (otp / oState.size).toFixed(2);
+        showCompare = cmp > otp;
+        oEls.frequency.style.display = 'none';
+      }
+
+      oEls.subPrice.textContent = '$' + sub.toFixed(2);
+      oEls.otpPrice.textContent = '$' + otp.toFixed(2);
+      oEls.finalPrice.textContent = '$' + final_.toFixed(2);
+      oEls.originalPrice.textContent = '$' + cmp.toFixed(2);
+      oEls.originalPrice.style.display = showCompare ? '' : 'none';
+      oEls.unitPrice.textContent = '$' + perBottle + '/bottle \u00B7 ' + (oState.size * 90) + '+ loads';
+      oEls.atcPrice.textContent = '$' + final_.toFixed(2);
+    }
+
+    /* Scent swatches */
+    offerBox.querySelectorAll('.ml-offer__swatch').forEach(function(sw) {
+      sw.addEventListener('click', function() {
+        offerBox.querySelectorAll('.ml-offer__swatch').forEach(function(s) { s.classList.remove('ml-offer__swatch--active'); });
+        sw.classList.add('ml-offer__swatch--active');
+        oState.scent = sw.dataset.scent;
+        oEls.mainImg.src = sw.src;
+        oEls.mainImg.alt = sw.dataset.scent;
+        oEls.scentName.textContent = sw.dataset.scent;
+        oEls.scentNotes.textContent = sw.dataset.notes;
+        oEls.selectedScent.textContent = sw.dataset.scent;
+      });
+    });
+
+    /* Size pills */
+    offerBox.querySelectorAll('.ml-offer__size-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        offerBox.querySelectorAll('.ml-offer__size-pill').forEach(function(p) { p.classList.remove('ml-offer__size-pill--active'); });
+        pill.classList.add('ml-offer__size-pill--active');
+        oState.size = parseInt(pill.dataset.size);
+        oUpdatePricing();
+      });
+    });
+
+    /* Purchase type toggle */
+    offerBox.querySelectorAll('.ml-offer__purchase-option').forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        offerBox.querySelectorAll('.ml-offer__purchase-option').forEach(function(o) { o.classList.remove('ml-offer__purchase-option--active'); });
+        opt.classList.add('ml-offer__purchase-option--active');
+        oState.type = opt.dataset.type;
+        oUpdatePricing();
+      });
+    });
+
+    /* ATC confetti */
+    document.getElementById('ml-offer-atc').addEventListener('click', function() {
+      if (typeof window.confetti === 'function') {
+        var count = 150, defaults = { origin: { y: 0.7 } };
+        function fire(r, o) { window.confetti(Object.assign({}, defaults, o, { particleCount: Math.floor(count * r) })); }
+        fire(0.25,{spread:26,startVelocity:55}); fire(0.2,{spread:60});
+        fire(0.35,{spread:100,decay:0.91,scalar:0.8}); fire(0.1,{spread:120,startVelocity:25,decay:0.92,scalar:1.2});
+      }
+    });
+
+    oUpdatePricing();
+  }
 })();
 </script>
 
