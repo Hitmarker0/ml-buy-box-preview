@@ -211,7 +211,7 @@
 
       {%- comment -%} Scent Selector {%- endcomment -%}
       <div class="ml-offer__scent-section">
-        <div class="ml-offer__section-label">Scent: <span id="ml-offer-selected-scent-{{ sid }}">
+        <div class="ml-offer__section-label">{{ section.settings.scent_label | default: 'SCENT' }}: <span id="ml-offer-selected-scent-{{ sid }}">
           {{ first_block.settings.display_name | default: first_p.title | remove: ' — Luxury Scented Laundry Detergent' }}
         </span></div>
         <div class="ml-offer__scent-swatches">
@@ -234,21 +234,21 @@
 
       {%- comment -%} Size Toggle {%- endcomment -%}
       <div class="ml-offer__size-section">
-        <div class="ml-offer__section-label">Size:</div>
+        <div class="ml-offer__section-label">{{ section.settings.size_label | default: 'SIZE' }}:</div>
         <div class="ml-offer__size-pills">
           <button class="ml-offer__size-pill ml-offer__size-pill--active" data-size="1">
-            <span class="ml-offer__size-pill-label">1 Bottle</span>
+            <span class="ml-offer__size-pill-label">{{ section.settings.single_label | default: '1 Bottle' }}</span>
             <span class="ml-offer__size-pill-sub">${{ section.settings.single_price | default: '39.00' }}</span>
           </button>
           <button class="ml-offer__size-pill" data-size="3">
-            <span class="ml-offer__size-pill-badge">Save 15%</span>
-            <span class="ml-offer__size-pill-label">3 Bottles</span>
-            <span class="ml-offer__size-pill-sub">${{ section.settings.bundle_3_price | default: '99.00' | divided_by: 3.0 | round: 0 }}/ea</span>
+            <span class="ml-offer__size-pill-badge">{{ section.settings.bundle_3_badge | default: 'SAVE 10%' }}</span>
+            <span class="ml-offer__size-pill-label">{{ section.settings.bundle_3_label | default: '3 Bottles' }}</span>
+            <span class="ml-offer__size-pill-sub">${{ section.settings.bundle_3_price | default: '99.00' | divided_by: 3.0 | round: 2 }}/ea</span>
           </button>
           <button class="ml-offer__size-pill" data-size="6">
-            <span class="ml-offer__size-pill-badge">Best Value</span>
-            <span class="ml-offer__size-pill-label">6 Bottles</span>
-            <span class="ml-offer__size-pill-sub">${{ section.settings.bundle_6_price | default: '175.00' | divided_by: 6.0 | round: 0 }}/ea</span>
+            <span class="ml-offer__size-pill-badge">{{ section.settings.bundle_6_badge | default: 'BEST VALUE' }}</span>
+            <span class="ml-offer__size-pill-label">{{ section.settings.bundle_6_label | default: '6 Bottles' }}</span>
+            <span class="ml-offer__size-pill-sub">${{ section.settings.bundle_6_price | default: '175.00' | divided_by: 6.0 | round: 2 }}/ea</span>
           </button>
         </div>
       </div>
@@ -259,15 +259,15 @@
           <div class="ml-offer__purchase-option ml-offer__purchase-option--active" data-type="subscribe">
             <div class="ml-offer__radio"><div class="ml-offer__radio-dot"></div></div>
             <div class="ml-offer__purchase-info">
-              <div class="ml-offer__purchase-label">Subscribe &amp; Save <span class="ml-offer__discount-badge">Save {{ section.settings.sub_discount_percent | default: 15 }}%</span></div>
-              <div class="ml-offer__purchase-detail">Cancel or skip anytime</div>
+              <div class="ml-offer__purchase-label">{{ section.settings.subscribe_label | default: 'Subscribe & Save' }} <span class="ml-offer__discount-badge">Save {{ section.settings.sub_discount_percent | default: 15 }}%</span></div>
+              <div class="ml-offer__purchase-detail">{{ section.settings.subscribe_detail | default: 'Cancel or skip anytime' }}</div>
             </div>
             <span class="ml-offer__option-price" id="ml-offer-sub-price-{{ sid }}"></span>
           </div>
           <div class="ml-offer__purchase-option" data-type="onetime">
             <div class="ml-offer__radio"><div class="ml-offer__radio-dot"></div></div>
             <div class="ml-offer__purchase-info">
-              <div class="ml-offer__purchase-label">One-time purchase</div>
+              <div class="ml-offer__purchase-label">{{ section.settings.onetime_label | default: 'One-time purchase' }}</div>
             </div>
             <span class="ml-offer__option-price" id="ml-offer-otp-price-{{ sid }}"></span>
           </div>
@@ -277,7 +277,7 @@
         {%- assign plans = first_product.selling_plan_groups.first.selling_plans -%}
         {%- if plans.size > 0 -%}
           <div class="ml-offer__frequency" id="ml-offer-frequency-{{ sid }}">
-            <div class="ml-offer__section-label">Delivery frequency:</div>
+            <div class="ml-offer__section-label">{{ section.settings.frequency_label | default: 'Delivery frequency' }}:</div>
             <select class="ml-offer__frequency-select" id="ml-offer-freq-select-{{ sid }}">
               {%- for plan in plans -%}
                 <option value="{{ plan.id }}">{{ plan.name }}</option>
@@ -297,7 +297,7 @@
       {%- comment -%} Add to Cart {%- endcomment -%}
       <button class="ml-offer__atc-btn" id="ml-offer-atc-{{ sid }}">
         <svg width="21" height="21" viewBox="0 0 21 21" fill="none"><g clip-path="url(#mloc{{ sid }})"><path d="M1.25 1.09a.83.83 0 000 1.67h1.48c.12 0 .24.04.34.11.1.07.17.17.21.28l2.75 8.24c.12.37.14.76.04 1.13l-.22.91a1.67 1.67 0 001.07 1.65c.2.08.41.12.63.12h10a.83.83 0 000-1.67H7.91a.33.33 0 01-.32-.29l.17-.68a.33.33 0 01.32-.24h8.93a.83.83 0 00.79-.57l2.22-6.67a.83.83 0 00-.79-1.1H5.88a.33.33 0 01-.32-.24l-.79-2.37a.83.83 0 00-.79-.57H1.25ZM7.08 16.92a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Zm10 0a1.67 1.67 0 100 3.34 1.67 1.67 0 000-3.34Z" fill="currentColor"/></g><defs><clipPath id="mloc{{ sid }}"><rect width="20" height="20" fill="white" transform="translate(.41 .26)"/></clipPath></defs></svg>
-        <span id="ml-offer-atc-text-{{ sid }}">ADD TO CART</span>
+        <span id="ml-offer-atc-text-{{ sid }}">{{ section.settings.atc_text | default: 'ADD TO CART' }}</span>
         &mdash;
         <span id="ml-offer-atc-price-{{ sid }}"></span>
       </button>
@@ -306,15 +306,15 @@
       <div class="ml-offer__trust">
         <div class="ml-offer__trust-item">
           <svg class="ml-offer__trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#5FAF8C"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="white"/></svg>
-          <span>Secure Checkout</span>
+          <span>{{ section.settings.trust_1_text | default: 'Secure Checkout' }}</span>
         </div>
         <div class="ml-offer__trust-item">
           <svg class="ml-offer__trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 8h-3V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-8 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z" fill="#5FAF8C"/></svg>
-          <span>Free Returns</span>
+          <span>{{ section.settings.trust_2_text | default: 'Free Returns' }}</span>
         </div>
         <div class="ml-offer__trust-item">
           <svg class="ml-offer__trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h12v16z" fill="#5FAF8C"/><path d="M8 6h8v2H8V6zm0 4h8v2H8v-2z" fill="#5FAF8C" opacity=".5"/></svg>
-          <span>Free Shipping 3+</span>
+          <span>{{ section.settings.trust_3_text | default: 'Free Shipping 3+' }}</span>
         </div>
       </div>
 
@@ -584,6 +584,108 @@
       "step": 1,
       "default": 15,
       "info": "Must match your Appstle selling plan discount."
+    },
+    {
+      "type": "header",
+      "content": "Labels"
+    },
+    {
+      "type": "text",
+      "id": "scent_label",
+      "label": "Scent label",
+      "default": "SCENT"
+    },
+    {
+      "type": "text",
+      "id": "size_label",
+      "label": "Size label",
+      "default": "SIZE"
+    },
+    {
+      "type": "text",
+      "id": "single_label",
+      "label": "1-Bottle label",
+      "default": "1 Bottle"
+    },
+    {
+      "type": "text",
+      "id": "bundle_3_label",
+      "label": "3-Bottle label",
+      "default": "3 Bottles"
+    },
+    {
+      "type": "text",
+      "id": "bundle_3_badge",
+      "label": "3-Bottle badge text",
+      "default": "SAVE 10%"
+    },
+    {
+      "type": "text",
+      "id": "bundle_6_label",
+      "label": "6-Bottle label",
+      "default": "6 Bottles"
+    },
+    {
+      "type": "text",
+      "id": "bundle_6_badge",
+      "label": "6-Bottle badge text",
+      "default": "BEST VALUE"
+    },
+    {
+      "type": "header",
+      "content": "Subscribe & Save"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_label",
+      "label": "Subscribe label",
+      "default": "Subscribe & Save"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_detail",
+      "label": "Subscribe detail text",
+      "default": "Cancel or skip anytime"
+    },
+    {
+      "type": "text",
+      "id": "onetime_label",
+      "label": "One-time purchase label",
+      "default": "One-time purchase"
+    },
+    {
+      "type": "text",
+      "id": "frequency_label",
+      "label": "Frequency label",
+      "default": "Delivery frequency"
+    },
+    {
+      "type": "header",
+      "content": "Button & Trust"
+    },
+    {
+      "type": "text",
+      "id": "atc_text",
+      "label": "Add to cart button text",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "trust_1_text",
+      "label": "Trust badge 1",
+      "default": "Secure Checkout"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_text",
+      "label": "Trust badge 2",
+      "default": "Free Returns"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_text",
+      "label": "Trust badge 3",
+      "default": "Free Shipping 3+"
     },
     {
       "type": "header",
